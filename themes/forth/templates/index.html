@@ -3,6 +3,6 @@
 {% block content %}
 {% set section = get_section(path="blog/_index.md") %}
 {% for page in section.pages %}
-<div><a href="{{page.permalink}}">{{page.title}}</a></div>
+<div><a href="{{page.path}}">{{page.title}}</a></div>
 {% endfor %}
 {% endblock content %}
