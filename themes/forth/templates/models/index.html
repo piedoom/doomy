@@ -1,0 +1,17 @@
+{# Used for showing 3d cad models #}
+{% extends "base.html" %}
+
+{% block content %}
+{% set section = get_section(path="models/_index.md") %}
+<div class="model-grid">
+    {% for page in section.pages %}
+
+    <a href="{{page.permalink}}">
+        <model-viewer src="{{page.path}}{{page.slug}}.glb" alt="{{page.path}}" ar
+            ar-modes="webxr scene-viewer quick-look" environment-image="neutral" auto-rotate>
+        </model-viewer>
+    </a>
+    {% endfor %}
+</div>
+<script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+{% endblock content %}

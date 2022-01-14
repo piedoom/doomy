@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% if title %}{{title}}{% endif %}</title>
+    <link rel="stylesheet" href="/main.css">
+</head>
+
+<body>
+    <div class="container">
+        <nav>
+            <a href="/">
+                <h3>{{config.title}}</h3>
+            </a>
+            <div class="search-container">
+                <input id="search" type="search" placeholder="🔎 Search">
+            </div>
+            <div class="search-results">
+                <div class="search-results__items"></div>
+            </div>
+            <div class="taxonomies">
+                <a href="/">posts</a><br />
+                <a href="/models">models</a>
+            </div>
+        </nav>
+        <main>
+            {% block content %}
+            {% endblock content %}
+        </main>
+    </div>
+    <script src='{{ get_url(path="/elasticlunr.min.js") }}'></script>
+    <script type="text/javascript" src='{{ get_url(path="search_index.en.js") }}'></script>
+    <script src='{{ get_url(path="/js/search.js") }}'></script>
+</body>
+
+</html>
