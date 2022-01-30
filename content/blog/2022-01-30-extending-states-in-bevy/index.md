@@ -166,12 +166,20 @@ enum Difficulty {
     Hard,
 }
 
-#[allow(clippy::derive_hash_xor_eq)] // You can ignore this if you aren't using clippy
 #[derive(Hash, Debug, Eq, Clone)]
 enum GameState {
     Load,
     Game(Settings),
     PostGame(Settings),
+}
+
+
+// Thanks to DJMcBonk on Discord for helping ensure this was impl'd correctly
+// See: https://doc.rust-lang.org/std/hash/trait.Hash.html#hash-and-eq
+impl Hash for GameState {
+    fn hash<H: std::hash::Hasher>(&self, state: &mut H) {
+        core::mem::discriminant(self).hash(state);
+    }
 }
 
 impl PartialEq for GameState {
