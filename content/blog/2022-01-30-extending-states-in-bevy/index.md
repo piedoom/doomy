@@ -166,20 +166,11 @@ enum Difficulty {
     Hard,
 }
 
-#[derive(Hash, Debug, Eq, Clone)]
+#[derive(Debug, Eq, Clone)]
 enum GameState {
     Load,
     Game(Settings),
     PostGame(Settings),
-}
-
-
-// Thanks to DJMcBonk on Discord for helping ensure this was impl'd correctly
-// See: https://doc.rust-lang.org/std/hash/trait.Hash.html#hash-and-eq
-impl Hash for GameState {
-    fn hash<H: std::hash::Hasher>(&self, state: &mut H) {
-        core::mem::discriminant(self).hash(state);
-    }
 }
 
 impl PartialEq for GameState {
@@ -187,6 +178,15 @@ impl PartialEq for GameState {
     /// ignoring any attached data.
     fn eq(&self, other: &Self) -> bool {
         std::mem::discriminant(self) == std::mem::discriminant(other)
+    }
+}
+
+// We also need to manually implement Hash since we did for PartialEq
+// Thanks to DJMcBonk on Discord for helping ensure this was impl'd correctly
+// See: https://doc.rust-lang.org/std/hash/trait.Hash.html#hash-and-eq
+impl Hash for GameState {
+    fn hash<H: std::hash::Hasher>(&self, state: &mut H) {
+        core::mem::discriminant(self).hash(state);
     }
 }
 
