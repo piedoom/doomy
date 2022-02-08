@@ -1,8 +1,9 @@
 {% extends "base.html" %}
 
 {% block content %}
-{% set section = get_section(path="blog/_index.md") %}
-{% for page in section.pages %}
-<div><a href="{{page.permalink}}">{{page.title}}</a></div>
-{% endfor %}
+{% set feed = load_data(path="https://vaporsoft.net/feed.toml", format="toml", method="GET") %}
+{{feed | safe}}
+{# {% for page in feed.page %}
+<div><a href="{{page.link}}">{{page.title}}</a></div>
+{% endfor %} #}
 {% endblock content %}
