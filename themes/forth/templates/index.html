@@ -1,9 +1,18 @@
 {% extends "base.html" %}
 
 {% block content %}
+{# Ideally, we'd do:
 {% set feed = load_data(path="https://vaporsoft.net/feed.toml", format="toml", method="GET") %}
-{{feed | safe}}
-{# {% for page in feed.page %}
-<div><a href="{{page.link}}">{{page.title}}</a></div>
-{% endfor %} #}
+But there's an issue: https://github.com/getzola/zola/issues/1753
+#}
+{% set feed = load_data(path="feed.toml", format="toml", method="GET") %}
+{% for page in feed.pages %}
+<div><a href="{{page.link}}" target="_blank">
+        <h5>{{page.title}}</h5>
+    </a>
+    <time datetime='{{ page.published }}'>{{ page.published | date(format="%Y-%m-%d") }}</time>
+    <p>{{page.description | safe}}</p>
+</div>
+<hr>
+{% endfor %}
 {% endblock content %}
