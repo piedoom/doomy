@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% import "macros.html" as m %}
+
+{% block content %}
+{% set section = get_section(path="games/_index.md") %}
+{% for page in section.pages %}
+<div class="game">
+    <a href="{{page.extra.link}}" target="_blank">
+        <h5>{{page.title}}</h5>
+    </a>
+    {{page.content | safe}}
+    {% if page.extra.repo %}
+    <a href="{{ page.extra.repo }}" target="_blank">{{ m::icon(name="code") }} Repository</a>
+    {% endif %}
+</div>
+<hr>
+{% endfor %}
+{% endblock content %}

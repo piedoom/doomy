@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% set section = get_section(path="audio/_index.md") %}
+{% set data = load_data(url="https://doomy.tumblr.com/api/read/json?type=audio&&num=50") %}
+
+{{ data | safe }}
+
+{% endblock content %}

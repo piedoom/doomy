@@ -1,0 +1,12 @@
+@import "colors";
+
+input {
+    background-color: $overlay-low;
+    border: none;
+    padding: 0.4em;
+    width: 100%;
+    border-radius: 0.2em;
+    font-size: 1em;
+    outline-color: $accent;
+    color: $contrast;
+}

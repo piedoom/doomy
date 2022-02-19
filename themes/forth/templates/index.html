@@ -4,8 +4,9 @@
 {% set feed = load_data(url="https://vaporsoft.net/feed.toml", format="toml") %}
 {% for page in feed.pages %}
 <div><a href="{{page.link}}" target="_blank">
-        <h5>{{page.title}}</h5>
+        <h5 class="hover-link">{{page.title}}</h5>
     </a>
+    <br>
     <time datetime='{{ page.published }}'>{{ page.published | date(format="%Y-%m-%d") }}</time>
     <p>{{page.description | safe}}</p>
 </div>

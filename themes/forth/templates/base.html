@@ -1,3 +1,5 @@
+{% import "macros.html" as m %}
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,15 +17,26 @@
             <a href="/">
                 <h3>{{config.title}}</h3>
             </a>
-            <div class="search-container">
+            {# <div class="search-container">
                 <input id="search" type="search" placeholder="🔎 Search">
-            </div>
+            </div> #}
             <div class="search-results">
                 <div class="search-results__items"></div>
             </div>
+            <hr>
             <div class="taxonomies">
-                <a href="/">posts</a><br />
+                <a href="/">posts</a>
                 <a href="/models">models</a>
+                <a href="/games">games</a>
+            </div>
+            <hr>
+            <div class="social">
+                {% for social in config.extra.social %}
+                <a alt="{{social.site}}" href="{{m::social_link(site=social.site, user=social.user)}}"
+                    target="_blank">{{
+                    m::icon(name=social.site)
+                    }}</a>
+                {% endfor %}
             </div>
         </nav>
         <main>

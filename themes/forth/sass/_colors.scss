@@ -1,5 +1,10 @@
-$background: #131426;
-$primary: #ECB929;
-$accent: #CA3D82;
-$contrast: #F2F2F2;
-$high-contrast: #FFF;
+$background: #171120;
+$accent: #ecb929;
+$primary: #ca3d60;
+$accent-light: lighten($accent, 5);
+$primary-light: lighten($primary, 5);
+$contrast: rgba(255, 255, 255, 0.75);
+$high-contrast: #fff;
+$overlay-high: rgba(255, 255, 255, 0.2);
+$overlay-med: rgba(255, 255, 255, 0.06);
+$overlay-low: rgba(255, 255, 255, 0.02);
