@@ -30,6 +30,7 @@
                 <a href="/games">games</a>
             </div>
             <hr>
+            {% if config.extra.social %}
             <div class="social">
                 {% for social in config.extra.social %}
                 <a alt="{{social.site}}" href="{{m::social_link(site=social.site, user=social.user)}}"
@@ -38,6 +39,7 @@
                     }}</a>
                 {% endfor %}
             </div>
+            {% endif %}
         </nav>
         <main>
             {% block content %}
