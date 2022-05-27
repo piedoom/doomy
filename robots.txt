@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://doomy.org/sitemap.xml
