@@ -3,6 +3,7 @@
 {% block content %}
 {% set feed = load_data(url="https://vaporsoft.net/feed.toml", format="toml") %}
 {% for page in feed.pages %}
+{% if not page.draft %}
 <div><a href="{{page.link}}" target="_blank">
         <h5 class="hover-link">{{page.title}}</h5>
     </a>
@@ -11,5 +12,6 @@
     <p>{{page.description | safe}}</p>
 </div>
 <hr>
+{% endif %}
 {% endfor %}
 {% endblock content %}
