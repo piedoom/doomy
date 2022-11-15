@@ -33,7 +33,7 @@
             {% if config.extra.social %}
             <div class="social">
                 {% for social in config.extra.social %}
-                <a alt="{{social.site}}" rel="me" href="{{m::social_link(site=social.site, user=social.user)}}"
+                <a alt="{{social.site}}" rel="me" href="{{m::social_link(site=social.site, user=social.user) | trim}}"
                     target="_blank">{{
                     m::icon(name=social.site)
                     }}</a>
