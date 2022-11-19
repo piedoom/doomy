@@ -1,21 +1,44 @@
 name = "forth"
 description = "an accessible & minimally-scripted theme."
 license = "MIT"
-homepage = "https://vaporsoft.net"
+homepage = "https://doomy.org"
 # The minimum version of Zola required
-min_version = "0.4.0"
+min_version = "0.16.0"
 # An optional live demo URL
-demo = ""
+demo = "https://doomy.org"
 
-
+[author]
+name = "doomy"
+homepage = "https://doomy.org"
 
 # Any variable there can be overridden in the end user `config.toml`
 # You don't need to prefix variables by the theme name but as this will
 # be merged with user data, some kind of prefix or nesting is preferable
 # Use snake_casing to be consistent with the rest of Zola
-[extra]
-tumblr = "staff"
 
-[author]
-name = "doomy"
-homepage = "https://vaporsoft.net"
+# [extra]
+# # Incorporate an additional XML feed into local posts
+# feed = ""
+
+# [extra.nav]
+# search = true
+# # Extra links to show in the nav
+# links = [{ name = "home", path = "/"}]
+# # Categories by name to reveal in the nav
+# categories = ["repositories", "games"]
+# # Extra HTML-safe content at the bottom of the nav area
+# content = false
+
+# # Social links
+# [[extra.social]]
+# # This theme adds the requirements for Mastodon verification automatically
+# site = "mastodon"
+# user = "Mastodon"
+
+# [[extra.social]]
+# site = "tumblr"
+# user = "staff"
+
+# [[extra.social]]
+# site = "twitter"
+# user = "twitter"

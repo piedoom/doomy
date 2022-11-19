@@ -2,7 +2,6 @@
 {% import "macros.html" as m %}
 
 {% block content %}
-{% set section = get_section(path="games/_index.md") %}
 {% for page in section.pages %}
 <div class="game">
     <a href="{{page.extra.link}}" target="_blank">

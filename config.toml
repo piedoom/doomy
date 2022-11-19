@@ -36,7 +36,14 @@ highlight_code = true
 site = "mastodon"
 user = "doomy"
 
+[extra]
+feed = "https://vaporsoft.net/feed.xml"
+
 [extra.nav]
+links = [{ name = "posts", path = "/"}]
+categories = ["games", "models"]
 content = false
+search = false
+
 # Put all your custom variables here
 

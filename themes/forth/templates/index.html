@@ -1,17 +1,25 @@
 {% extends "base.html" %}
 
 {% block content %}
-{% set feed = load_data(url="https://vaporsoft.net/feed.toml", format="toml") %}
-{% for page in feed.pages %}
-{% if not page.draft %}
-<div><a href="{{page.link}}" target="_blank">
+
+{% set feed = [] %}
+{% if config.extra.feed %}
+{% set feed = load_data(url=config.extra.feed, format="xml") %}
+{% set feed = feed.root.pages %}
+{% endif %}
+
+{% set pages = section.pages | concat(with=feed) | sort(attribute="date") | reverse %}
+
+{% for page in pages %}
+<div>
+    <a href="{%if page.permalink%}{{page.permalink}}{%else%}{{page.id}}{%endif%}" target="_blank">
         <h5 class="hover-link">{{page.title}}</h5>
     </a>
     <br>
-    <time datetime='{{ page.published }}'>{{ page.published | date(format="%Y-%m-%d") }}</time>
-    <p>{{page.description | safe}}</p>
+    <time datetime='{{ page.date }}'>{{ page.date | date(format="%Y-%m-%d") }}</time>
+    {% if page.description %}<p>{{ page.description | safe }}</p>{% endif %}
 </div>
 <hr>
-{% endif %}
+
 {% endfor %}
 {% endblock content %}

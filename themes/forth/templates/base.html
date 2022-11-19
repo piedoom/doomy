@@ -17,19 +17,36 @@
             <a href="/">
                 <h3>{{config.title}}</h3>
             </a>
-            {# <div class="search-container">
+            {% if config.extra.nav.search %}
+            <div class="search-container">
                 <input id="search" type="search" placeholder="🔎 Search">
-            </div> #}
+            </div>
+            {% endif %}
             <div class="search-results">
                 <div class="search-results__items"></div>
             </div>
             <hr>
-            <div class="taxonomies">
-                <a href="/">posts</a>
-                <a href="/models">models</a>
-                <a href="/games">games</a>
+
+            <div class="links">
+
+                {% if config.extra.nav.links %}
+                {% for link in config.extra.nav.links %}
+                <a href="{{link.path}}">{{link.name}}</a>
+                {% endfor %}
+                {% endif %}
+
+                {% if config.extra.nav.categories %}
+
+                {% for category in config.extra.nav.categories %}
+                {% set section = get_section(path=category~"/_index.md") %}
+                <a href="{{section.permalink}}">{{category}}</a>
+                {% endfor %}
+
+                {% endif %}
+
             </div>
             <hr>
+
             {% if config.extra.social %}
             <div class="social">
                 {% for social in config.extra.social %}
@@ -40,6 +57,7 @@
                 {% endfor %}
             </div>
             {% endif %}
+
             {% if config.extra.nav.content %}
             <hr>
             {{ config.extra.nav.content | safe }}

@@ -1,0 +1,33 @@
+# The URL the site will be built for
+base_url = "https://forth.doomy.org"
+
+# Whether to automatically compile all Sass files in the sass directory
+compile_sass = true
+
+# Whether to build a search index to be used later on by a JavaScript library
+build_search_index = true
+title = "forth theme"
+default_language = "en"
+
+taxonomies = []
+
+[extra]
+feed = "https://vaporsoft.net/feed.xml"
+
+[extra.nav]
+search = true
+links = [{ name = "home", path = "/"}]
+categories = ["repositories", "games"]
+content = false
+
+[[extra.social]]
+site = "mastodon"
+user = "Mastodon"
+
+[[extra.social]]
+site = "tumblr"
+user = "staff"
+
+[[extra.social]]
+site = "twitter"
+user = "twitter"
