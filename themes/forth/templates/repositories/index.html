@@ -4,13 +4,19 @@
 {% block content %}
 {% for page in section.pages %}
 <div class="game">
-    <a href="{{page.extra.link}}" target="_blank">
+    {% if page.extra.link %}<a href="{{page.extra.link}}" target="_blank">{% endif %}
         <h5>{{page.title}}</h5>
-    </a>
+        {% if page.extra.link %}
+    </a> {% endif %}
     {{page.content | safe}}
-    {% if page.extra.repo %}
-    <a href="{{ page.extra.repo }}" target="_blank">{{ m::icon(name="code") }} Repository</a>
-    {% endif %}
+    <div style="gap: 1.6em; display: flex;">
+        {% if page.extra.repo %}
+        <a href="{{ page.extra.repo }}" target="_blank">{{ m::icon(name="code") }} Repository</a>
+        {% endif %}
+        {% if page.extra.link %}
+        <a href="{{ page.extra.link }}" target="_blank">{{ m::icon(name="link") }} Website</a>
+        {% endif %}
+    </div>
 </div>
 <hr>
 {% endfor %}
