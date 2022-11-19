@@ -40,6 +40,10 @@
                 {% endfor %}
             </div>
             {% endif %}
+            {% if config.extra.nav.content %}
+            <hr>
+            {{ config.extra.nav.content | safe }}
+            {% endif %}
         </nav>
         <main>
             {% block content %}
